@@ -11,16 +11,51 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ThreadGroup" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="symbol_1" elementType="Argument">
+            <stringProp name="Argument.name">symbol_1</stringProp>
+            <stringProp name="Argument.value">WSO2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="symbol_2" elementType="Argument">
+            <stringProp name="Argument.name">symbol_2</stringProp>
+            <stringProp name="Argument.value">IBM</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="symbol_3" elementType="Argument">
+            <stringProp name="Argument.name">symbol_3</stringProp>
+            <stringProp name="Argument.value">MSFT</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="symbol_4" elementType="Argument">
+            <stringProp name="Argument.name">symbol_4</stringProp>
+            <stringProp name="Argument.value">ORACLE</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="symbol_5" elementType="Argument">
+            <stringProp name="Argument.name">symbol_5</stringProp>
+            <stringProp name="Argument.value">APACHE</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="symbol_6" elementType="Argument">
+            <stringProp name="Argument.name">symbol_6</stringProp>
+            <stringProp name="Argument.value">SUN</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <stringProp name="LoopController.loops">2</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">10</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
-        <longProp name="ThreadGroup.start_time">1482726686000</longProp>
-        <longProp name="ThreadGroup.end_time">1482726686000</longProp>
+        <longProp name="ThreadGroup.start_time">1482793817000</longProp>
+        <longProp name="ThreadGroup.end_time">1482793817000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -35,13 +70,12 @@
                 <stringProp name="Argument.value">&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;&#xd;
 &lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;&#xd;
     &lt;soapenv:Header xmlns:wsa=&quot;http://www.w3.org/2005/08/addressing&quot;&gt;&#xd;
-        &lt;wsa:MessageID&gt;urn:uuid:96f8295c-277e-4028-9575-d7cb45a07374&lt;/wsa:MessageID&gt;&#xd;
         &lt;wsa:Action&gt;urn:getQuote&lt;/wsa:Action&gt;&#xd;
     &lt;/soapenv:Header&gt;&#xd;
     &lt;soapenv:Body&gt;&#xd;
         &lt;m0:getQuote xmlns:m0=&quot;http://services.samples&quot;&gt;&#xd;
             &lt;m0:request&gt;&#xd;
-                &lt;m0:symbol&gt;IBM&lt;/m0:symbol&gt;&#xd;
+                &lt;m0:symbol&gt;${__V(symbol_${__Random(1,6,)})}&lt;/m0:symbol&gt;&#xd;
             &lt;/m0:request&gt;&#xd;
         &lt;/m0:getQuote&gt;&#xd;
     &lt;/soapenv:Body&gt;&#xd;
@@ -50,13 +84,13 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.domain">127.0.0.1</stringProp>
           <stringProp name="HTTPSampler.port">8280</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/services/StockQuote</stringProp>
+          <stringProp name="HTTPSampler.path">/services/StockQuoteProxy</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
