@@ -43,6 +43,21 @@
             <stringProp name="Argument.value">SUN</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="route_1" elementType="Argument">
+            <stringProp name="Argument.name">route_1</stringProp>
+            <stringProp name="Argument.value">StockQuoteProxy</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="route_2" elementType="Argument">
+            <stringProp name="Argument.name">route_2</stringProp>
+            <stringProp name="Argument.value">StockQuoteProxy2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="route_3" elementType="Argument">
+            <stringProp name="Argument.name">route_3</stringProp>
+            <stringProp name="Argument.value">StockQuoteProxy3</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -50,9 +65,9 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">100</stringProp>
+          <stringProp name="LoopController.loops">4</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">500</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <longProp name="ThreadGroup.start_time">1482793817000</longProp>
         <longProp name="ThreadGroup.end_time">1482793817000</longProp>
@@ -90,7 +105,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/services/StockQuoteProxy</stringProp>
+          <stringProp name="HTTPSampler.path">/services/${__V(route_${__Random(1,3,)})}</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
